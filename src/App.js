@@ -26,7 +26,7 @@ const AddContactPage = () => {
 
     // Send data to the backend
     axios
-      .post("http://localhost:5000/api/contacts", newContact)
+      .post("https://cloudcontactbackend.onrender.com/api/contacts/", newContact)
       .then((response) => {
         setMessage("Contact added successfully.");
         setName("");
@@ -136,7 +136,7 @@ function App() {
   // Fetch contacts from the backend when the component mounts
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/contacts")
+      .get("https://cloudcontactbackend.onrender.com/api/contacts/")
       .then((response) => setContacts(response.data))
       .catch((err) => console.log(err));
   }, []);
@@ -145,7 +145,7 @@ function App() {
   const handleDelete = (id) => {
     console.log("Deleting contact with id:", id); // Log the id
     axios
-      .delete(`http://localhost:5000/api/contacts/${id}`)
+      .delete(`https://cloudcontactbackend.onrender.com/api/contacts/${id}`)
       .then(() => {
         setContacts(contacts.filter(contact => contact._id !== id));
       })
